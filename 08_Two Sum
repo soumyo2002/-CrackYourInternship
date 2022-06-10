@@ -1,0 +1,25 @@
+//link to the problem:https:https://leetcode.com/problems/two-sum/
+
+//DSA sheet by Arsh Goyal: Problem 8
+
+
+
+class Solution {
+    public int[] twoSum(int[] nums, int target) 
+    {
+        int two[]=new int[2];
+        for(int i=0;i<nums.length;i++)
+        {
+            for(int j=(i+1);j<nums.length;j++)
+            {
+                if(target==(nums[i]+nums[j]))
+                {
+                 two[0]=j;
+                     two[1]=i;
+                    break;
+                }
+            }
+        }
+        return(two);
+    }
+}
