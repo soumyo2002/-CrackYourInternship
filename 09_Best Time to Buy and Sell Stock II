@@ -1,0 +1,27 @@
+//link to the problem:https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+//DSA sheet by Arsh Goyal: Problem 9
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int size=prices.length;
+        if(size==1)
+            return 0;
+        else{
+        int min=prices[0],profit=0,max_profit=0,total_profit=0;
+        for(int i=0;i<size-1;i++)
+        {
+            if(min>prices[i])
+                min=prices[i];
+            int selling_price=prices[i+1];
+            profit=selling_price-min;
+            if(profit>max_profit){
+                max_profit=profit;
+                total_profit+=max_profit;
+                min=prices[i+1];
+                max_profit=0;
+            }
+        }
+        return total_profit;
+    }
+    }
+}
