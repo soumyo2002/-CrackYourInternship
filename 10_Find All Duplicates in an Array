@@ -1,0 +1,34 @@
+//link to the problem:https://leetcode.com/problems/find-all-duplicates-in-an-array/
+
+//DSA sheet by Arsh Goyal: Problem 10
+
+//Brute: Two loops with O(n2)
+//Better:Sort the array and find repeating element with O(nlogn)
+//Optimal:Make elements negative
+
+
+class Solution {
+    public List<Integer> findDuplicates(int[] nums) {
+        int n=nums.length;
+        ArrayList<Integer> list=new ArrayList<Integer>();
+        if(n==1)
+        {
+            return list;
+        }
+        else
+        {
+            for(int i=0;i<n;i++)
+            {
+                int index=Math.abs(nums[i])-1;
+                int val=nums[index];
+                if(val>0){
+                    nums[index]=-val;
+                }
+                else{
+                    list.add(index+1);
+                }     
+            }
+        }
+        return list;
+    }
+}
