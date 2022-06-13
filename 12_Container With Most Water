@@ -1,5 +1,5 @@
 //link to the problem:https://leetcode.com/problems/container-with-most-water/
-//DSA sheet by Arsh Goyal: Problem 11
+//DSA sheet by Arsh Goyal: Problem 12
 
 //Brute:Use two loops :O(N^2)
 //Optimal:Increment/Decrement the one with less height
