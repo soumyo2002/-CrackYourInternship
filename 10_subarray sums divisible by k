@@ -1,0 +1,30 @@
+//link to the problem:https://leetcode.com/problems/subarray-sums-divisible-by-k/
+
+//DSA sheet by Arsh Goyal: Problem 10
+
+
+//brute-force:Use 2 loops to calculate all subarrays
+//optimal:Use two pointers and find same remainders
+
+class Solution {
+    public int subarraysDivByK(int[] nums, int k) {
+        int n=nums.length;
+        
+            HashMap<Integer,Integer> map=new HashMap<>();
+            int current_sum=0,remainder=0,ans=0;
+            map.put(0,1);
+            for(int i=0;i<n;i++){
+                current_sum+=nums[i];
+                remainder=current_sum%k;
+                if(remainder<0)
+                   remainder+=k;
+                if(map.containsKey(remainder)){
+                    ans+=map.get(remainder);
+                    map.put(remainder,map.get(remainder)+1);
+                }
+                else
+                   map.put(remainder,1); 
+            }
+            return ans;
+    }
+}
