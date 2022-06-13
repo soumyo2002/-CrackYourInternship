@@ -1,6 +1,6 @@
 //link to the problem:https://leetcode.com/problems/find-all-duplicates-in-an-array/
 
-//DSA sheet by Arsh Goyal: Problem 10
+//DSA sheet by Arsh Goyal: Problem 11
 
 //Brute: Two loops with O(n2)
 //Better:Sort the array and find repeating element with O(nlogn)
