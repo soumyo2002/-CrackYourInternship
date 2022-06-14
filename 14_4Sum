@@ -1,0 +1,41 @@
+//link to the problem:https://leetcode.com/problems/4sum/
+
+//DSA sheet by Arsh Goyal: Problem 14
+
+//brute: using three loops and then binary search the fourth number: TC->O(N^3logN) SC->O(1)
+//optimized: Using 2 loops and using two pinter to find rest two TC->O(N^3) SC->O(1)
+
+class Solution {
+    public List < List < Integer >> fourSum(int[] nums, int target) {
+        Arrays.sort(nums);
+        ArrayList < List < Integer >> answer = new ArrayList < > ();
+        int n = nums.length;
+        for (int i = 0; i < n - 1; i++) {
+            if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) {
+                    for (int j = (i + 1); j < n - 2; j++) {
+                        if (j == (i + 1) || (j > (i + 1) && nums[j] != nums[j - 1])) {
+                                int low = j + 1, high = n - 1, sum1 = nums[i] + nums[j];
+                                while (low < high) {
+                                    int sum2 = sum1 + nums[low] + nums[high];
+                                    if (sum2 == target) {
+                                        answer.add(Arrays.asList(nums[i], nums[j],nums[low],
+nums[high]));
+                                        while (low < high && nums[high] == nums[high - 1])
+                                            high--;
+                                        while (low < high && nums[low] == nums[low + 1])
+                                            low++;
+                                        low++;
+                                        high--;
+                                    } else if (sum2 < target)
+                                        low++;
+                                    else
+                                        high--;
+                                }
+                            }
+                    }
+                }
+            }
+        return answer;
+        }
+    }
+                           
