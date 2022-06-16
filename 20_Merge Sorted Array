@@ -1,0 +1,37 @@
+/*
+Remember while solving:
+1)Convey your thoughts clearly to the interviewer
+2)Maintain topmost code quality
+3)Discuss testcases while solving
+4)Evolve from brute->Better->optimal
+*/
+
+//link to the problem:https://leetcode.com/problems/merge-sorted-array/
+
+//DSA sheet by Arsh Goyal: Problem 20
+
+//Brute:Use an extra array
+//better:Traverse num1 and swap with nums2 and sort nums2 everytime
+//optimal:start from last index(Refer neetcode solution)
+
+class Solution {
+    public void merge(int[] nums1, int m, int[] nums2, int n) {
+        int last_index=m+n-1,l1=m-1,l2=n-1;
+        while(l1>=0 && l2>=0){
+            if(nums1[l1]>nums2[l2]){
+                nums1[last_index]=nums1[l1];
+                l1--;
+            }
+            else{
+                nums1[last_index]=nums2[l2];
+                l2--;
+            }
+            last_index--;
+        }
+        while(l2>=0){
+            nums1[last_index]=nums2[l2];
+            l2--;
+            last_index--;
+        }
+    }
+}
