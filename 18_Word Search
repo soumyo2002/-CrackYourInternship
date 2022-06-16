@@ -1,0 +1,49 @@
+/*
+Remember while solving:
+1)Convey your thoughts clearly to the interviewer
+2)Maintain topmost code quality
+3)Discuss testcases while solving
+4)Evolve from brute->Better->optimal
+*/
+
+//link to the problem:https://leetcode.com/problems/word-search/
+
+//DSA sheet by Arsh Goyal: Problem 18
+
+//Backtracking
+class Solution {
+    public boolean explore(char[][] board,int i,int j,int string_index, String word,int row,int col){
+        int string_length=word.length();
+        if(string_index==string_length) return true;
+        if(i<0 || j<0 || i>=row || j>=col) return false;
+        if(board[i][j]!=word.charAt(string_index)) return false;
+        
+        int[] direction_i={-1,0,1,0};
+        int[] direction_j={0,-1,0,1};
+        char array_element=board[i][j];
+        board[i][j]='#';
+        for(int k=0;k<4;k++){
+            boolean result=explore(board,i+direction_i[k],j+direction_j[k], string_index+1,word,row,col);
+            if(result){
+                board[i][j]=array_element;
+                return true;
+            }
+        }
+        board[i][j]=array_element;
+        return false;
+    }
+    public boolean exist(char[][] board, String word) {
+        int row=board.length,col=board[0].length;
+        boolean result=true;
+        char first_letter=word.charAt(0);
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(first_letter==board[i][j]){
+                    result=explore(board,i,j,0,word,row,col);
+                    if(result) return result;
+                }
+            }
+        }
+        return false;
+    }
+}
