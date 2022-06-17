@@ -1,0 +1,15 @@
+/*
+Remember while solving:
+1)Convey your thoughts clearly to the interviewer
+2)Maintain topmost code quality
+3)Discuss testcases while solving
+4)Evolve from brute->Better->optimal
+*/
+
+//Use two loops from i to j O(N^2) O(1)
+//
+//
+
+//link to the problem:https:https://leetcode.com/problems/reverse-pairs/
+//DSA sheet by Arsh Goyal: Problem 21
+
