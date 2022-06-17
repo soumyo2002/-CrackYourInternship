@@ -1,0 +1,33 @@
+/*
+Remember while solving:
+1)Convey your thoughts clearly to the interviewer
+2)Maintain topmost code quality
+3)Discuss testcases while solving
+4)Evolve from brute->Better->optimal
+*/
+
+//Sort and find frequency O(nlogn) and O(1)
+//Use hasmaps to store frequency O(n) O(n)
+//Moore Voting algorithm
+
+//link to the problem:https://leetcode.com/problems/majority-element/
+
+//DSA sheet by Arsh Goyal: Problem 21
+
+class Solution {
+    public int majorityElement(int[] nums) {
+       int n=nums.length,frequency=0,majority=nums[0];
+        for(int i=0;i<n;i++){
+            if(frequency==0){
+                majority=nums[i];
+            }
+            if(majority==nums[i]){
+                frequency++;
+            }
+            else{
+                frequency--;
+            }
+        }
+        return majority;
+    }
+}
