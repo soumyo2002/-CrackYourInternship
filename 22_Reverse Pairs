@@ -7,8 +7,7 @@ Remember while solving:
 */
 
 //Use two loops from i to j O(N^2) O(1)
-//
-//
+//Modfied mergesort
 
 //link to the problem:https:https://leetcode.com/problems/reverse-pairs/
 //DSA sheet by Arsh Goyal: Problem 21
