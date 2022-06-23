@@ -1,0 +1,40 @@
+/*
+Remember while solving:
+1)Convey your thoughts clearly to the interviewer
+2)Maintain topmost code quality
+3)Discuss testcases while solving
+4)Evolve from brute->Better->optimal
+*/
+
+//Use a stack
+
+//link to the problem:https://leetcode.com/problems/valid-parentheses/
+//DSA sheet by Arsh Goyal: Problem 23
+
+
+class Solution {
+    public boolean isValid(String s) {
+      int length=s.length();
+        Stack<Character> st=new Stack<Character>();
+        for(int i=0;i<length;i++){
+            char bracket=s.charAt(i);
+            if(bracket=='(' || bracket=='{' || bracket=='['){
+                st.push(bracket);
+            }
+            else{
+                if(st.empty())
+                    return false;
+                else{
+                    char ch=st.peek();
+                    st.pop();
+                    if((bracket==')' && ch!='(') || (bracket=='}' && ch!='{') || (bracket==']' && ch!='['))
+                        return false;
+                }
+            }
+        }
+        if(st.empty())
+            return true;
+        else
+            return false;
+    }
+}
