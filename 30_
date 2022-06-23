@@ -1,0 +1,35 @@
+/*
+Remember while solving:
+1)Convey your thoughts clearly to the interviewer
+2)Maintain topmost code quality
+3)Discuss testcases while solving
+4)Evolve from brute->Better->optimal
+*/
+
+//Use a hashmap TC-->O(N^logN) and space O(1)
+//Use an array  TC-->O(N) and space O(1)
+
+//link to the problem:https://www.geeksforgeeks.org/print-all-the-duplicates-in-the-input-string/
+//DSA sheet by Arsh Goyal: Problem 30
+
+
+public class HelloWorld {
+
+    public static void main(String []args) {
+        String str="KIIT";
+        int[] letter=new int[26];
+        str=str.toLowerCase();
+        int length=str.length();
+        for(int i=0; i<length; i++) {
+            char wrd=str.charAt(i);
+            int index=wrd-'a';
+            letter[index]++;
+        }
+        for(int i=0; i<26; i++) {
+            if(letter[i]>1) {
+                char ch=(char)(i+'a');
+                System.out.println(ch+"-->"+letter[i]);
+            }
+        }
+    }
+}
