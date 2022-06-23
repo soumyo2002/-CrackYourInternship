@@ -1,0 +1,8 @@
+//link to the problem:https://leetcode.com/problems/implement-strstr/
+//DSA sheet by Arsh Goyal: Problem 31
+class Solution {
+    public int strStr(String haystack, String needle) {
+       int k=haystack.indexOf(needle);
+        return k;
+    }
+}
