@@ -1,0 +1,31 @@
+/*
+Remember while solving:
+1)Convey your thoughts clearly to the interviewer
+2)Maintain topmost code quality
+3)Discuss testcases while solving
+4)Evolve from brute->Better->optimal
+*/
+
+//Brute:find modulus and divsion and then find O(N^2) O(N)
+//optimal: Use 2 arrays and then run one loop O(N) O(1)
+
+//link to the problem:https://leetcode.com/problems/integer-to-roman/
+
+//DSA sheet by Arsh Goyal: Problem 34
+
+
+class Solution {
+    public String intToRoman(int num) {
+        String ans="";
+        int[] number={1,4,5,9,10,40,50,90,100,400,500,900,1000};
+        String[] letter={"I","IV","V","IX","X","XL","L","XC","C","CD","D","CM","M"};
+        
+        for(int i=12;i>=0;i--){
+            while(num>=number[i]){
+              ans=ans+letter[i];
+                num-=number[i];
+            }
+        }
+        return ans;
+    }
+}
