@@ -1,0 +1,43 @@
+/*
+Remember while solving:
+1)Convey your thoughts clearly to the interviewer
+2)Maintain topmost code quality
+3)Discuss testcases while solving
+4)Evolve from brute->Better->optimal
+*/
+
+//Find min length and check first string with all the strings: O(N*M) where N is size of array and M is the length of the smallests tring
+//Use tries for better solution
+
+//link to the problem:https://leetcode.com/problems/longest-common-prefix/
+
+//DSA sheet by Arsh Goyal: Problem 33
+
+class Solution {
+    public int findmin(String[] strs,int n) {
+        int min=strs[0].length();
+        for(int i=1;i<n;i++){
+            int len=strs[i].length();
+            if(len<min)
+                min=len;
+        }
+        return min;
+    }
+    
+    public String longestCommonPrefix(String[] strs) {
+        int arr_size=strs.length;
+        int min_length=findmin(strs,arr_size);
+        String res="";
+        char current,wrd;
+        for(int i=0;i<min_length;i++){
+            current=strs[0].charAt(i);
+            for(int j=1;j<arr_size;j++){
+                wrd=strs[j].charAt(i);
+            if(current!=wrd)
+                return res;
+            }
+            res=res+current;
+        }
+        return res;
+    }
+}
