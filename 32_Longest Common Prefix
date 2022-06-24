@@ -11,7 +11,7 @@ Remember while solving:
 
 //link to the problem:https://leetcode.com/problems/longest-common-prefix/
 
-//DSA sheet by Arsh Goyal: Problem 33
+//DSA sheet by Arsh Goyal: Problem 32
 
 class Solution {
     public int findmin(String[] strs,int n) {
