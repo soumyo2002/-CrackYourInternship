@@ -1,0 +1,55 @@
+/*
+Remember while solving:
+1)Convey your thoughts clearly to the interviewer
+2)Maintain topmost code quality
+3)Discuss testcases while solving
+4)Evolve from brute->Better->optimal
+*/
+
+//TC->O(N) and SC->O(no of characters)
+
+//link to the problem:https://leetcode.com/problems/simplify-path/
+
+//DSA sheet by Arsh Goyal: Problem 36
+
+
+class Solution {
+    public String simplifyPath(String path) {
+     int length=path.length();
+     Stack<String> stack=new Stack<>();
+        int i=0;
+        String temp="";
+        if(path.charAt(length-1)!='/'){
+            length++;
+            path=path+"/";
+        }
+        for(i=1;i<length;i++){
+            char wrd=path.charAt(i);
+            if(wrd!='/'){
+                  temp=temp+wrd;
+            }
+            else{
+            if(temp.isEmpty() || temp.equals(".")){
+                temp="";
+                continue;
+            }
+            else if(temp.equals("..")){
+                if(!stack.empty()){
+                    stack.pop();
+                }
+            }
+            else{
+                stack.push(temp);
+            }
+                temp="";
+            }
+        }
+        if(stack.empty())
+            return "/";
+        String ans="";
+        while(!stack.empty()){
+            ans="/"+stack.pop()+ans;
+        }
+        return ans;
+    }
+}
