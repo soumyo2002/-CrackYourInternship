@@ -1,0 +1,68 @@
+/*
+Remember while solving:
+1)Convey your thoughts clearly to the interviewer
+2)Maintain topmost code quality
+3)Discuss testcases while solving
+4)Evolve from brute->Better->optimal
+*/
+
+//TC->O(n), where n is the length of string s,Since each character of string s is traversed at most twice, the algorithm’s time complexity is O(n) + O(m).
+//SC->O(n) fro hashmap
+
+//link to the problem:https://leetcode.com/problems/minimum-window-substring/
+//DSA sheet by Arsh Goyal: Problem 37
+
+//Count frequncy and then track using two pointers
+
+class Solution {
+    public String minWindow(String s, String p) {
+        HashMap<Character,Integer> map1=new HashMap<>();
+        HashMap<Character,Integer> map2=new HashMap<>();
+        int p_size=p.length();
+        int s_size=s.length();
+        int count=0,index=0,sign=1;
+        String ans="",final_ans="";
+        
+        for(int i=0;i<p_size;i++){
+            char ch=p.charAt(i);
+            map1.put(ch,map1.getOrDefault(ch,0)+1);
+        }
+        for(int i=0;i<s_size;i++){
+            char ch=s.charAt(i);
+            map2.put(ch,map2.getOrDefault(ch,0)+1);
+            if(map2.getOrDefault(ch,0)<=map1.getOrDefault(ch,0))
+                count++;
+            if(count==p_size){
+                String temp="";
+                temp=s.substring(index,i+1);
+                
+                int flag=1;
+                while(flag==1){
+                    ch=s.charAt(index);
+                    if(map2.get(ch)>map1.getOrDefault(ch,0)){
+                        map2.put(ch,map2.get(ch)-1);
+                        index++;
+                    }
+                    else
+                        flag=-1;
+                }
+                ans=s.substring(index,i+1);
+                
+                if(sign==1){
+                    sign=0;
+                final_ans=s;
+                }
+                
+                if(final_ans.length()>ans.length())
+                    final_ans=ans;
+                else if(final_ans.length()>temp.length())
+                    final_ans=temp;
+                
+                map2.put(ch,map2.get(ch)-1);
+                count--;
+                index++;
+            }
+        }
+        return final_ans;
+    }
+}
