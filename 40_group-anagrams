@@ -1,0 +1,42 @@
+/*
+Remember while solving:
+1)Convey your thoughts clearly to the interviewer
+2)Maintain topmost code quality
+3)Discuss testcases while solving
+4)Evolve from brute->Better->optimal
+*/
+
+//link to the problem:https://leetcode.com/problems/group-anagrams/
+//DSA sheet by Arsh Goyal: Problem 40
+
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+        int size=strs.length;
+        HashMap<HashMap<Character,Integer>,ArrayList<String>> bmap=new HashMap<>();
+        for(int i=0;i<size;i++){
+            HashMap<Character,Integer> fmap=new HashMap<>();
+            String wrd=strs[i];
+            int str_len=wrd.length();
+            for(int j=0;j<str_len;j++){
+               char ch=wrd.charAt(j); 
+                fmap.put(ch,fmap.getOrDefault(ch,0)+1);
+            }
+            if(bmap.containsKey(fmap)==false){
+                ArrayList<String> list=new ArrayList<>();
+                list.add(wrd);
+                bmap.put(fmap,list);
+            }
+            else{
+                ArrayList<String> list=bmap.get(fmap);
+                list.add(wrd);
+            }
+        }
+        List<List<String>> answers=new ArrayList<>();
+        for(ArrayList<String> val : bmap.values()){
+            answers.add(val);
+        }
+        return answers;
+    }
+}
+
+
