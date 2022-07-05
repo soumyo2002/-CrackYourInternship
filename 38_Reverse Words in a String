@@ -1,0 +1,39 @@
+/*
+Remember while solving:
+1)Convey your thoughts clearly to the interviewer
+2)Maintain topmost code quality
+3)Discuss testcases while solving
+4)Evolve from brute->Better->optimal
+*/
+
+//link to the problem:https://leetcode.com/problems/reverse-words-in-a-string/
+//DSA sheet by Arsh Goyal: Problem 38
+
+
+
+
+class Solution {
+    public String reverseWords(String s) {
+        int length=s.length(),i=length-1;
+        char wrd;
+        String ans="",final_ans="";
+        while(i>=0){
+            wrd=s.charAt(i);
+            if(wrd!=' '){
+                while(wrd!=' ' && i>=0){
+                    ans=wrd+ans;
+                    i--;
+                    if(i!=-1)
+                    wrd=s.charAt(i);
+                }
+                final_ans=final_ans+ans+" ";
+                ans="";
+                i--;
+            }
+            else{
+                i--;
+            }
+        }
+        return(final_ans.substring(0,final_ans.length()-1));
+    }
+}
