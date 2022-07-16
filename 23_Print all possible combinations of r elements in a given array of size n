@@ -9,6 +9,9 @@ Remember while solving:
 //link to the problem:https://www.geeksforgeeks.org/print-all-possible-combinations-of-r-elements-in-a-given-array-of-size-n/
 //DSA sheet by Arsh Goyal: Problem 23
 
+//brute:Use two loops and scan it using O(N^2) time and O(R) space complexity
+//Better:Use recursion+backtracking O(N-R) time complexity and O(R) space complexity
+When we make the recursion tree,we will have tree size as (N-R) and we use an array of size R to temporarily store the answer.
 
 // C++ Program to print all combination of
 // size r in an array of size n
